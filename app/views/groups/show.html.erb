@@ -37,4 +37,8 @@
       <% end %>
     </tbody>
   </table>
-  <%= will_paginate @posts %>
+  <div class="apple_pagination">
+    Page <%= @posts.current_page %> of <%= @posts.total_pages %>
+    <br>
+    <%= will_paginate @posts,previous_label: h("<"), next_label: h(">"), :container => false %>
+  </div>
