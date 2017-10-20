@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: [:new, :create, :edit]
   before_action :set_group, only: [:show, :edit, :update, :destroy]
 
   # GET /groups
@@ -20,13 +20,16 @@ class GroupsController < ApplicationController
 
   # GET /groups/1/edit
   def edit
+    if current_user != @group.user
+      redirect_to root_path
+    end
   end
 
   # POST /groups
   # POST /groups.json
   def create
     @group = Group.new(group_params)
-    @group.user = current_user 
+    @group.user = current_user
 
     respond_to do |format|
       if @group.save
