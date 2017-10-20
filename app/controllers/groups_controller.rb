@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :authenticate_user!, only: [:new]
+  before_action :authenticate_user!, only: [:new, :create]
   before_action :set_group, only: [:show, :edit, :update, :destroy]
 
   # GET /groups
@@ -26,6 +26,7 @@ class GroupsController < ApplicationController
   # POST /groups.json
   def create
     @group = Group.new(group_params)
+    @group.user = current_user
 
     respond_to do |format|
       if @group.save
