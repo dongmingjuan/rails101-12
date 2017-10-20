@@ -11,7 +11,7 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
-    @posts = @group.posts
+    @posts = @group.posts.paginate(:page => params[:page], :per_page => 5)
   end
 
   # GET /groups/new
