@@ -18,6 +18,7 @@
         <td><%= group.title %></td>
         <td><%= simple_format(group.description) %></td>
         <td><%= group.user.email %></td>
+         <td><%= group.released_on %></td>
         <% if current_user && current_user = group.user %>
         <td><%= link_to 'Show', group %></td>
         <td><%= link_to 'Edit', edit_group_path(group) %></td>
