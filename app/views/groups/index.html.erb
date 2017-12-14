@@ -8,6 +8,7 @@
       <th>Title</th>
       <th>Description</th>
        <td>Creator </td>
+       <td></td>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -19,6 +20,11 @@
         <td><%= simple_format(group.description) %></td>
         <td><%= group.user.email %></td>
          <td><%= group.released_on %></td>
+         <td><%= link_to("文章集合", group.url_address) %></td>
+         <td>
+           <a href="<%= group.url_address %>" target="_new"><%= group.url_address %></a>
+           <a href="http://courses.growthschool.com/courses/rails-101/" target=_new>xdite</a>
+         </td>
         <% if current_user && current_user = group.user %>
         <td><%= link_to 'Show', group %></td>
         <td><%= link_to 'Edit', edit_group_path(group) %></td>
